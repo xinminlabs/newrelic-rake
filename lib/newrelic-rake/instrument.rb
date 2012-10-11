@@ -16,7 +16,7 @@ DependencyDetection.defer do
       alias_method :origin_invoke, :invoke
       def invoke(*args)
         NewRelic::Agent.manual_start
-        perform_action_with_newrelic_trace(:name => self.name) do
+        perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
           origin_invoke(*args)
         end
       ensure
