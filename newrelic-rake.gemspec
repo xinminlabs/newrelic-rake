@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.version       = Newrelic::Rake::VERSION
   gem.authors       = ["Richard Huang"]
   gem.email         = ["flyerhzm@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{newrelic instrument for rake task}
+  gem.summary       = %q{newrelic instrument for rake task.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
