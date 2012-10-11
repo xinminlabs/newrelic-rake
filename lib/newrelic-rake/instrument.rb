@@ -13,14 +13,12 @@ DependencyDetection.defer do
     ::Rake::Task.class_eval do
       include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
-      alias_method :origin_invoke, :invoke
-      def invoke(*args)
+      alias_method :origin_execute, :execute
+      def execute(args=nil)
         NewRelic::Agent.manual_start
         perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
-          origin_invoke(*args)
+          origin_execute(args)
         end
-      ensure
-        NewRelic::Agent.shutdown
       end
     end
   end
