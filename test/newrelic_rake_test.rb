@@ -1,7 +1,7 @@
 require 'test/unit'
 require 'newrelic-rake/instrument'
 
-class TestNewRelicRedis < Test::Unit::TestCase
+class TestNewRelicRake < Test::Unit::TestCase
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
   def setup
@@ -22,5 +22,11 @@ class TestNewRelicRedis < Test::Unit::TestCase
     Rake::Task.define_task('foo')
     Rake::Task['foo'].invoke
     assert @engine.metrics.include?('OtherTransaction/Rake/Rake::Task/foo'), 'rake task is not in metrics'
+  end
+
+  def test_dispatcher
+    Rake::Task.define_task('bar')
+    Rake::Task['bar'].invoke
+    assert_equal :rake, NewRelic::Agent.config[:dispatcher]
   end
 end
