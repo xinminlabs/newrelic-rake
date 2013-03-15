@@ -9,4 +9,4 @@ We love pull requests. Here's a quick guide:
 5. Create new Pull Request
 
 Please make sure you add a test for your change and all tests are passed.
-(`bundle && rspec spec`)
+(`bundle && rake test`)
