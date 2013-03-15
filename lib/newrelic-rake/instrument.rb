@@ -1,3 +1,5 @@
+require 'new_relic/agent/method_tracer'
+
 DependencyDetection.defer do
   @name = :rake
 
