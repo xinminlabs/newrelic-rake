@@ -20,11 +20,17 @@ Or install it yourself as:
 
 nothing special to set.
 
-## Contributing
+## Authors and Contributors
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+* [Richard Huang](https://github.com/flyerhzm) - Creator of the project
+* [Yury Velikanau](yury.velikanau@gmail.com) - Add tests, fix newrelic
+  method tracer.
 
+Please fork and contribute, any help in making this project better is appreciated!
+
+This project is a member of the [OSS Manifesto](http://ossmanifesto.org/).
+
+## Copyright
+
+Copyright @ 2012 - 2013 Richard Huang. See
+[MIT-LICENSE](https://github.com/flyerhzm/newrelic-rake/blob/master/MIT-LICENSE) for details
