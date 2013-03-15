@@ -6,7 +6,7 @@ DependencyDetection.defer do
   end
 
   executes do
-    NewRelic::Agent.logger.debug 'Installing Rake instrumentation'
+    ::NewRelic::Agent.logger.info 'Installing Rake instrumentation'
   end
 
   executes do
