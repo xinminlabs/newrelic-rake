@@ -25,4 +25,3 @@ DependencyDetection.defer do
     end
   end
 end
-
