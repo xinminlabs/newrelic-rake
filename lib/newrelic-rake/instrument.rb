@@ -21,6 +21,7 @@ DependencyDetection.defer do
         perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
           origin_execute(args)
         end
+        NewRelic::Agent.shutdown
       end
     end
   end

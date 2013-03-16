@@ -1,4 +1,5 @@
 require 'test/unit'
+require 'mocha/setup'
 require 'newrelic-rake/instrument'
 
 class TestNewRelicRake < Test::Unit::TestCase
@@ -25,8 +26,14 @@ class TestNewRelicRake < Test::Unit::TestCase
   end
 
   def test_dispatcher
+    NewRelic::Agent.expects(:manual_start).with(:dispatcher => :rake)
     Rake::Task.define_task('bar')
     Rake::Task['bar'].invoke
-    assert_equal :rake, NewRelic::Agent.config[:dispatcher]
+  end
+
+  def test_shutdown
+    NewRelic::Agent.expects(:shutdown)
+    Rake::Task.define_task('baz')
+    Rake::Task['baz'].invoke
   end
 end
