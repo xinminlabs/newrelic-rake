@@ -30,10 +30,4 @@ class TestNewRelicRake < Test::Unit::TestCase
     Rake::Task.define_task('bar')
     Rake::Task['bar'].invoke
   end
-
-  def test_shutdown
-    NewRelic::Agent.expects(:shutdown)
-    Rake::Task.define_task('baz')
-    Rake::Task['baz'].invoke
-  end
 end

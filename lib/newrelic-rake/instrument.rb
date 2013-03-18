@@ -21,8 +21,12 @@ DependencyDetection.defer do
         perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
           origin_execute(args)
         end
-        NewRelic::Agent.shutdown
       end
+
+      # Make sure NewRelic agent flush data to the server according to
+      # https://newrelic.com/docs/ruby/monitoring-ruby-background-processes-and-daemons
+      # even though Agent configuration is :send_data_on_exit => true
+      at_exit { NewRelic::Agent.shutdown }
     end
   end
 end
