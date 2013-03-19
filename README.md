@@ -23,8 +23,7 @@ nothing special to set.
 ## Authors and Contributors
 
 * [Richard Huang](https://github.com/flyerhzm) - Creator of the project
-* [Yury Velikanau](yury.velikanau@gmail.com) - Add tests, fix newrelic
-  method tracer.
+* [Yury Velikanau](yury.velikanau@gmail.com) - Main contributor
 
 Please fork and contribute, any help in making this project better is appreciated!
 
