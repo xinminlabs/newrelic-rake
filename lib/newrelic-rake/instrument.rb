@@ -15,9 +15,16 @@ DependencyDetection.defer do
     ::Rake::Task.class_eval do
       include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
 
+      alias_method :origin_invoke_with_call_chain, :invoke_with_call_chain
+      def invoke_with_call_chain(task_args, invocation_chain)
+        # empty invocation chain invoke first and only once
+        if invocation_chain.is_a? Rake::InvocationChain::EmptyInvocationChain
+          NewRelic::Agent.manual_start(:dispatcher => :rake)
+        end
+      end
+
       alias_method :origin_execute, :execute
       def execute(args=nil)
-        NewRelic::Agent.manual_start(:dispatcher => :rake)
         perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
           origin_execute(args)
         end
