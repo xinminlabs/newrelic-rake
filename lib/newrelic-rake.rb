@@ -1,8 +1,16 @@
 require "newrelic-rake/version"
 require "newrelic-rake/instrument"
 
-module Newrelic
+module NewRelic
   module Rake
-    # Your code goes here...
+    class <<self
+      def started=(started)
+        @started = started
+      end
+
+      def started?
+        !!@started
+      end
+    end
   end
 end
