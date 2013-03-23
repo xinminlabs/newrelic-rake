@@ -21,6 +21,7 @@ DependencyDetection.defer do
         if invocation_chain.is_a? Rake::InvocationChain::EmptyInvocationChain
           NewRelic::Agent.manual_start(:dispatcher => :rake)
         end
+        origin_invoke_with_call_chain(task_args, invocation_chain)
       end
 
       alias_method :origin_execute, :execute
