@@ -1,5 +1,10 @@
 # Next Release
 
+## 1.3.0 (03/24/2013)
+
+* Add a NewRelic::Rake.started to promise starting newrelic agent only
+  once.
+
 ## 1.2.0 (03/19/2013)
 
 * Force dispatcher to rake.
