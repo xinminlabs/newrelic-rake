@@ -18,7 +18,18 @@ Or install it yourself as:
 
 ## Usage
 
-nothing special to set.
+There is usually nothing to do for rake tasks in rails that depend on `:environment`,
+monitoring of these should just work.
+
+Rake files need to require `newrelic-rake` and start the newrelic agent
+before executing tasks to monitor:
+
+```
+require 'newrelic-rake'
+NewRelic::Agent.manual_start
+```
+
+These steps happen automatically in Rails' `:environment` task if you use `Bundler.require` in your `application.rb`.
 
 ## Authors and Contributors
 
