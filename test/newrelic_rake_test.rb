@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'mocha/setup'
-require 'newrelic-rake/instrument'
+require 'newrelic-rake'
 
 class TestNewRelicRake < Test::Unit::TestCase
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
