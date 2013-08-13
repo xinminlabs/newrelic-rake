@@ -19,6 +19,12 @@ class TestNewRelicRake < Test::Unit::TestCase
     @sampler.clear_builder
   end
 
+  def test_ignore_delayed_job
+    Rake::Task.define_task('jobs:work')
+    Rake::Task['jobs:work'].invoke
+    assert !@engine.metrics.include?('OtherTransaction/Rake/Rake::Task/jobs:work'), 'jobs:work task is in metrics'
+  end
+
   def test_metrics
     Rake::Task.define_task('foo')
     Rake::Task['foo'].invoke
