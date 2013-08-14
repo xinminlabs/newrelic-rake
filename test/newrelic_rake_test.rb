@@ -1,6 +1,6 @@
 require 'test/unit'
 require 'mocha/setup'
-require 'newrelic-rake/instrument'
+require 'newrelic-rake'
 
 class TestNewRelicRake < Test::Unit::TestCase
   include NewRelic::Agent::Instrumentation::ControllerInstrumentation
@@ -17,6 +17,12 @@ class TestNewRelicRake < Test::Unit::TestCase
 
   def teardown
     @sampler.clear_builder
+  end
+
+  def test_ignore_delayed_job
+    Rake::Task.define_task('jobs:work')
+    Rake::Task['jobs:work'].invoke
+    assert !@engine.metrics.include?('OtherTransaction/Rake/Rake::Task/jobs:work'), 'jobs:work task is in metrics'
   end
 
   def test_metrics

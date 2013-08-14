@@ -17,12 +17,10 @@ DependencyDetection.defer do
 
       alias_method :origin_execute, :execute
       def execute(args=nil)
-        unless NewRelic::Rake.started?
-          NewRelic::Agent.manual_start(:dispatcher => :rake)
-          NewRelic::Rake.started = true
-        end
-        perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
+        if ignore_metric_reporting?
           origin_execute(args)
+        else
+          execute_with_newrelic_trace(args)
         end
       end
 
@@ -30,6 +28,21 @@ DependencyDetection.defer do
       # https://newrelic.com/docs/ruby/monitoring-ruby-background-processes-and-daemons
       # even though Agent configuration is :send_data_on_exit => true
       at_exit { NewRelic::Agent.shutdown }
+
+      def execute_with_newrelic_trace(args)
+        unless ::NewRelic::Rake.started?
+          ::NewRelic::Agent.manual_start(:dispatcher => :rake)
+          ::NewRelic::Rake.started = true
+        end
+        perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
+          origin_execute(args)
+        end
+      end
+
+      def ignore_metric_reporting?
+        self.name == 'jobs:work'
+      end
     end
   end
+
 end
