@@ -1,5 +1,10 @@
 # Next Release
 
+## 1.3.1 (08/21/2013)
+
+* Ignore delay job rake task
+* Add document to use newrelic-rake without rails
+
 ## 1.3.0 (03/24/2013)
 
 * Add a NewRelic::Rake.started to promise starting newrelic agent only
