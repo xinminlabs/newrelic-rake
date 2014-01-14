@@ -32,7 +32,7 @@ class TestNewRelicRake < Test::Unit::TestCase
   end
 
   def test_dispatcher
-    NewRelic::Agent.expects(:manual_start).with(:dispatcher => :rake)
+    NewRelic::Agent.expects(:manual_start)
     Rake::Task.define_task('bar')
     Rake::Task['bar'].invoke
   end

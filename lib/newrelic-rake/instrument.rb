@@ -31,7 +31,7 @@ DependencyDetection.defer do
 
       def execute_with_newrelic_trace(args)
         unless ::NewRelic::Rake.started?
-          ::NewRelic::Agent.manual_start(:dispatcher => :rake)
+          ::NewRelic::Agent.manual_start
           ::NewRelic::Rake.started = true
         end
         perform_action_with_newrelic_trace(:name => self.name, :category => "OtherTransaction/Rake") do
