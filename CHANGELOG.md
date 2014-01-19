@@ -1,5 +1,9 @@
 # Next Release
 
+## 1.4.0 (01/19/2014)
+
+* Remove explicit setting of dispatcher
+
 ## 1.3.1 (08/21/2013)
 
 * Ignore delay job rake task
