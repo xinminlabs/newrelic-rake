@@ -24,11 +24,6 @@ DependencyDetection.defer do
         end
       end
 
-      # Make sure NewRelic agent flush data to the server according to
-      # https://newrelic.com/docs/ruby/monitoring-ruby-background-processes-and-daemons
-      # even though Agent configuration is :send_data_on_exit => true
-      at_exit { NewRelic::Agent.shutdown }
-
       def execute_with_newrelic_trace(args)
         unless ::NewRelic::Rake.started?
           ::NewRelic::Agent.manual_start
