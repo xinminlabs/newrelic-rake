@@ -33,8 +33,7 @@ These steps happen automatically in Rails' `:environment` task if you use `Bundl
 
 ## Authors and Contributors
 
-* [Richard Huang](https://github.com/flyerhzm) - Creator of the project
-* [Yury Velikanau](yury.velikanau@gmail.com) - Main contributor
+[Contributors](https://github.com/flyerhzm/newrelic-rake/graphs/contributors)
 
 Please fork and contribute, any help in making this project better is appreciated!
 

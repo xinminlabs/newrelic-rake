@@ -1,5 +1,9 @@
 # Next Release
 
+## 1.4.1 (01/27/2014)
+
+* Remove at_exit shutdown hook
+
 ## 1.4.0 (01/19/2014)
 
 * Remove explicit setting of dispatcher
