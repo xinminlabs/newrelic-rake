@@ -31,6 +31,16 @@ NewRelic::Agent.manual_start
 
 These steps happen automatically in Rails' `:environment` task if you use `Bundler.require` in your `application.rb`.
 
+## Install exit handler
+
+In general, newrelic gem will automatically install exit handler. But if
+you have sinatra gem in Gemfile.lock, you have to manually install exit
+handler
+
+```
+at_exit { NewRelic::Agent.shutdown  }
+```
+
 ## Authors and Contributors
 
 [Contributors](https://github.com/flyerhzm/newrelic-rake/graphs/contributors)
